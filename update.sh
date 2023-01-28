@@ -42,12 +42,7 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-if [ -f /boot/adsb-config.txt ]; then
-    echo --------
-    echo "You are using the adsb.fi image, the feed setup script does not need to be installed."
-    echo --------
-    exit 1
-fi
+
 
 function aptInstall() {
     if ! apt install -y --no-install-recommends --no-install-suggests "$@"; then
