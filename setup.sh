@@ -39,22 +39,6 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-## REFUSE INSTALLATION ON ADSBX IMAGE
-
-if [ -f /boot/adsb-config.txt ]; then
-    echo --------
-    echo "You are using the adsb.fi image, the feed setup script does not need to be installed."
-    echo "You should already be feeding."
-    echo "If the feed isn't working, check/correct the configuration using nano:"
-    echo --------
-    echo "sudo nano /boot/adsb-config.txt"
-    echo --------
-    echo "Hint for using nano: Ctrl-X to exit, Y(yes) and Enter to save."
-    echo --------
-    echo "Exiting."
-    exit 1
-fi
-
 bash "$IPATH/git/configure.sh"
 
 whiptail --backtitle "$BACKTITLETEXT" --title "$BACKTITLETEXT" --yesno "We are now ready to begin setting up your receiver to feed ADSB.fi.\n\nDo you wish to proceed?" 9 78 || exit 1
